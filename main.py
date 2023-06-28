@@ -11,7 +11,9 @@ from firebase_admin import db
 from firebase_admin import firestore
 from flask import request
 
-cred = credentials.Certificate('C:/Users/sahil/serviceAccountKey.json')
+# cred = credentials.Certificate('C:/Users/sahil/serviceAccountKey.json')
+cred = credentials.Certificate('/Users/pmarathay/code/firebase-backend/firebase_meetupagain-1fff5.json')
+
 firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
@@ -50,4 +52,4 @@ def update_key_interests():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='127.0.0.1', port=4000)
