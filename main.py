@@ -10,9 +10,14 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import firestore
 from flask import request
+import os
 
 # cred = credentials.Certificate('C:/Users/sahil/serviceAccountKey.json')
-cred = credentials.Certificate('/Users/pmarathay/code/firebase-backend/firebase_meetupagain-1fff5.json')
+
+# USE THIS FOR LOCAL HOST:
+# cred = credentials.Certificate('/Users/pmarathay/code/firebase-backend/firebase_meetupagain-1fff5.json')
+# USE THIS FOR ZAPPA UPDATE
+cred = credentials.Certificate(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
 
 firebase_admin.initialize_app(cred)
 
@@ -49,6 +54,9 @@ def update_key_interests():
         key = doc.id
         db.collection('lists').document(key).update({'interests': firestore.ArrayUnion([data])})
     return 'ok'
+
+
+#  -- ACTUAL ENDPOINTS    -----------------------------------------
 
 
 if __name__ == '__main__':
