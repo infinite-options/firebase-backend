@@ -15,8 +15,7 @@ import os
 app = Flask(__name__)
 
 
-cred = credentials.Certificate('/Users/ishankanungo/Desktop/meetupagain-1fff5-firebase-adminsdk-nf0i1-07b20cdc3c.json')
-#cred = credentials.Certificate(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
+cred = credentials.Certificate(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
 
 firebase_admin.initialize_app(cred)
 
